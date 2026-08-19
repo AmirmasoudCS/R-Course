@@ -1,5 +1,7 @@
 # Understanding the Carat-Price Chart
 
+![Diamond Prices](./assets/images/01_diamonds_plot.png)
+
 This chart shows the relationship between **diamond carat (weight)** and **price**, separated by **clarity level**.
 
 ## Dots
