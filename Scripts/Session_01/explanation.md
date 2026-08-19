@@ -1,4 +1,4 @@
-# Understanding the Carat–Price Chart
+# Understanding the Carat-Price Chart
 
 This chart shows the relationship between **diamond carat (weight)** and **price**, separated by **clarity level**.
 
