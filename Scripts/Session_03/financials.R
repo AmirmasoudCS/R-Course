@@ -99,6 +99,26 @@ plot_revenue_expenses_profit <- function(revenue, expenses, taxxed_profit){
          col = c("forestgreen", "firebrick", "steelblue"), lwd = 2, pch = 16)
 }
 
+plot_monthly_profit_bar <- function(taxxed_profit){
+  months <- month_names()
+  mean_val <- year_mean_after_tax(taxxed_profit)
+  colors <- ifelse(taxxed_profit >= mean_val, "seagreen", "tomato")
+  
+  png("monthly_profit_bar.png", width = 900, height = 500)
+  bars <- barplot(taxxed_profit, names.arg = months, col = colors,
+                  main = "Monthly Taxed Profit (Green = Above Mean, Red = Below Mean)",
+                  ylab = "Taxed Profit ($)", las = 2)
+  abline(h = mean_val, col = "black", lty = 2, lwd = 2)
+  legend("topleft", legend = paste("Mean:", round(mean_val, 2)), lty = 2, lwd = 2)
+  dev.off()
+  
+  barplot(taxxed_profit, names.arg = months, col = colors,
+          main = "Monthly Taxed Profit (Green = Above Mean, Red = Below Mean)",
+          ylab = "Taxed Profit ($)", las = 2)
+  abline(h = mean_val, col = "black", lty = 2, lwd = 2)
+  legend("topleft", legend = paste("Mean:", round(mean_val, 2)), lty = 2, lwd = 2)
+}
+
 
 
 display <- function(){
