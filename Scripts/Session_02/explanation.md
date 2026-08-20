@@ -12,7 +12,15 @@ In this simulation, we repeatedly drew random samples from a **standard normal d
 
 Theoretically, about **68.27%** of values in a standard normal distribution fall within one standard deviation of the mean. This is the well-known **68-95-99.7 empirical rule**.
 
+![Standard normal distribution with probabilities for each region](../assets/images/normal_distribution_probabilities.png)
+
+*The standard normal distribution, showing the proportion of values falling within 1, 2, and 3 standard deviations of the mean.*
+
 ## What the Graph Shows
+
+![Law of Large Numbers convergence plot](../assets/images/law_of_large_numbers.png)
+
+*Simulated proportion of samples within [-1, +1] as the number of samples increases, converging toward the theoretical 68.27%.*
 
 - **X-axis (log scale):** Number of samples drawn, ranging from ~10 to 1,000,000.
 - **Y-axis:** The proportion of samples that fell within [-1, +1].
@@ -24,4 +32,4 @@ As the sample size grows into the thousands and millions, the blue line stabiliz
 
 ## Takeaway
 
-Small samples can be misleading. random chance has a big influence. Large samples are far more reliable, as randomness "averages out" and the observed result converges to the true probability.
+Small samples can be misleading. Random chance has a big influence. Large samples are far more reliable, as randomness "averages out" and the observed result converges to the true probability.
