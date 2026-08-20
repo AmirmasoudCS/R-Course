@@ -211,6 +211,16 @@ display <- function(){
   worst <- worst_month(taxxed)
   cat("Month index:", worst$index, "- Value:", worst$value, "\n")
   sep()
+  
+  cat("\nGenerating visualizations...\n")
+  plot_revenue_expenses_profit(revenue, expenses, taxxed)
+  plot_monthly_profit_bar(taxxed)
+  plot_profit_margin(margin)
+  plot_cumulative_profit(taxxed)
+  cat("Plots saved as PNG files in your working directory.\n")
+  
+  
+  
 }
 
 main <- function(){
