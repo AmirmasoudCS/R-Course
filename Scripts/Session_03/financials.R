@@ -140,7 +140,24 @@ plot_profit_margin <- function(margin){
          lty = 2, lwd = 2, col = "darkorange")
 }
 
-
+plot_cumulative_profit <- function(taxxed_profit){
+  months <- month_names()
+  cumulative <- cumsum(taxxed_profit)
+  
+  png("cumulative_profit.png", width = 900, height = 500)
+  plot(1:12, cumulative, type = "o", col = "purple", lwd = 2, pch = 16,
+       xaxt = "n", xlab = "Month", ylab = "Cumulative Profit ($)",
+       main = "Cumulative Taxed Profit Over the Year")
+  axis(1, at = 1:12, labels = months)
+  abline(h = 0, col = "gray", lty = 3)
+  dev.off()
+  
+  plot(1:12, cumulative, type = "o", col = "purple", lwd = 2, pch = 16,
+       xaxt = "n", xlab = "Month", ylab = "Cumulative Profit ($)",
+       main = "Cumulative Taxed Profit Over the Year")
+  axis(1, at = 1:12, labels = months)
+  abline(h = 0, col = "gray", lty = 3)
+}
 
 display <- function(){
   revenue <- read_revenue()
