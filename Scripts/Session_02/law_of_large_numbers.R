@@ -12,6 +12,15 @@ for (i in seq_along(number_of_examples)) {
   cat("n =", n, "-> Proportion within [-1, +1]:", round(proportion * 100, 2), "%\n")
 }
 
+# Create output directory if it doesn't exist
+output_dir <- "../../assets/images/"
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir, recursive = TRUE)
+}
+
+# Open PNG device to save the plot
+png(filename = paste0(output_dir, "law_of_large_numbers.png"), width = 800, height = 600)
+
 # Plot the results
 plot(number_of_examples, results, 
      log = "x",                                  # log scale on x-axis (since n spans orders of magnitude)
@@ -33,3 +42,8 @@ legend("bottomright",
        lty = c(1, 2), 
        pch = c(19, NA),
        lwd = c(1, 2))
+
+# Close the device to finalize/save the file
+dev.off()
+
+cat("Plot saved to:", paste0(output_dir, "law_of_large_numbers.png"), "\n")
