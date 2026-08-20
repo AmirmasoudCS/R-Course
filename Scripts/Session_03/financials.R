@@ -21,3 +21,11 @@ profit_margin <- function(taxxed_profit, revenue){
   return(taxxed_profit/revenue)
 }
 
+yeaer_mean_after_tax(taxxed_profit){
+  sum <- 0
+  for(i in 1:12){
+    sum <- sum + taxxed_profit[i]
+  }
+  return(sum/12)
+}
+
