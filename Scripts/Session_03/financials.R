@@ -21,7 +21,7 @@ profit_margin <- function(taxxed_profit, revenue){
   return(taxxed_profit/revenue)
 }
 
-yeaer_mean_after_tax(taxxed_profit){
+yeaer_mean_after_tax <- function(taxxed_profit){
   sum <- 0
   for(i in 1:12){
     sum <- sum + taxxed_profit[i]
@@ -29,16 +29,28 @@ yeaer_mean_after_tax(taxxed_profit){
   return(sum/12)
 }
 
-good_months(taxxed_profit){
+good_months <- function(taxxed_profit){
   mean <- year_mean_after_tax(taxxed_profit)
   good <- taxxed_profit > mean
   return(good)
 }
 
-bad_months(taxxed_profit){
+bad_months <- function(taxxed_profit){
   mean <- year_mean_after_tax(taxxed_profit)
   bad <- taxxed_profit < mean
   return(bad)
+}
+
+best_month <- function(taxxed_profit){
+  max_index <- 1
+  max_value <- taxxed_profit[1]
+  for(i in 2:12){
+    if(taxxed_profit[i]>max_value){
+      max_index <- i
+      max_value <- taxxed_profit[i]
+    }
+  }
+  return(max_index, max_value)
 }
 
 
