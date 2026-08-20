@@ -20,7 +20,9 @@ Theoretically, about **68.27%** of values in a standard normal distribution fall
 
 ![Law of Large Numbers convergence plot](../../assets/images/law_of_large_numbers.png)
 
+<p align="center">
 *Simulated proportion of samples within [-1, +1] as the number of samples increases, converging toward the theoretical 68.27%.*
+</p>
 
 - **X-axis (log scale):** Number of samples drawn, ranging from ~10 to 1,000,000.
 - **Y-axis:** The proportion of samples that fell within [-1, +1].
