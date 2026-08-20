@@ -48,7 +48,7 @@ Bar chart of profit margin per month, with a dashed line marking the average mar
 
 ### 4. Cumulative Taxed Profit Over the Year
 
-Line chart tracking the running total of taxed profit month over month. The cumulative total dips into negative territory between March and May as early losses accumulate, then recovers sharply from June, climbing steadily for the rest of the year and closing at its highest point in December — evidence of a strong second-half turnaround despite the rocky start.
+Line chart tracking the running total of taxed profit month over month. The cumulative total dips into negative territory between March and May as early losses accumulate, then recovers sharply from June, climbing steadily for the rest of the year and closing at its highest point in December - evidence of a strong second-half turnaround despite the rocky start.
 
 ![Cumulative Taxed Profit](../../assets/images/cumulative_profit.png)
 
