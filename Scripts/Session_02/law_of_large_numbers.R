@@ -13,7 +13,7 @@ for (i in seq_along(number_of_examples)) {
 }
 
 # Create output directory if it doesn't exist
-output_dir <- "../../assets/images/"
+output_dir <- "./assets/images/"
 if (!dir.exists(output_dir)) {
   dir.create(output_dir, recursive = TRUE)
 }
