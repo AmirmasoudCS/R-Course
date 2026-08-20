@@ -11,3 +11,9 @@ raw_profit <- function(revenue, expenses){
   return(revenue - expenses)
 }
 
+taxxed_profit <- function(revenue, expenses, tax_rate=0.3){
+  raw_profit <- raw_profit(revenue, expenses)
+  after_tax <- (1-tax_rate)*raw_profit
+  return(after_tax)
+}
+
