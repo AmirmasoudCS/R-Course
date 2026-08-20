@@ -12,13 +12,13 @@ In this simulation, we repeatedly drew random samples from a **standard normal d
 
 Theoretically, about **68.27%** of values in a standard normal distribution fall within one standard deviation of the mean. This is the well-known **68-95-99.7 empirical rule**.
 
-![Standard normal distribution with probabilities for each region](../assets/images/normal_distribution_probabilities.png)
+![Standard normal distribution with probabilities for each region](../../assets/images/normal_distribution_probabilities.png)
 
 *The standard normal distribution, showing the proportion of values falling within 1, 2, and 3 standard deviations of the mean.*
 
 ## What the Graph Shows
 
-![Law of Large Numbers convergence plot](../assets/images/law_of_large_numbers.png)
+![Law of Large Numbers convergence plot](../../assets/images/law_of_large_numbers.png)
 
 *Simulated proportion of samples within [-1, +1] as the number of samples increases, converging toward the theoretical 68.27%.*
 
