@@ -1,10 +1,17 @@
 # R-Course
 
-This is the readme file foe my course on R programming language.
+A collection of notes, exercises, and mini-projects from my journey of learning **R programming**.
+
+The repository contains the code I write throughout the course, along with small projects that apply the concepts covered in each session.
 
 ## Mini-Projects
 
-1. [Cut Diamond Prices](./Scripts/Session_01/README.md)
+* [💎 **Cut Diamond Prices**](./Scripts/Session_01/README.md)
+  Exploring diamond prices and practicing data analysis in R.
 
-2. [Law of Large Numbers (LLN)](./Scripts/Session_02/README.md)
+* [🎲 **Law of Large Numbers (LLN)**](./Scripts/Session_02/README.md)
+  Exploring the Law of Large Numbers through simulation in R.
 
+---
+
+> **Note:** This repository is primarily a learning record.
