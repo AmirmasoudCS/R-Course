@@ -1,7 +1,7 @@
 set.seed(42) # random seed for reproducibility
 
 # Generate 20 log-spaced points between 10 and 1,000,000
-number_of_examples <- round(10^seq(1, 6, length.out = 20))
+number_of_examples <- round(10^seq(1, 6, length.out = 100))
 number_of_examples <- unique(number_of_examples)  # remove duplicates from rounding
 
 results <- numeric(length(number_of_examples))    # to store proportions
