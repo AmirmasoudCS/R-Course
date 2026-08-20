@@ -53,6 +53,18 @@ best_month <- function(taxxed_profit){
   return(max_index, max_value)
 }
 
+worst_month <- function(taxxed_profit){
+  min_index <- 1
+  min_value <- taxxed_profit[1]
+  for(i in 2:12){
+    if(taxxed_profit[i]<min_value){
+      min_index <- i
+      min_value <- taxxed_profit[i]
+    }
+  }
+  return(min_index, min_value)
+}
+
 
 
 
