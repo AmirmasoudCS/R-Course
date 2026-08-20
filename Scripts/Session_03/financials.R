@@ -91,7 +91,7 @@ plot_revenue_expenses_profit <- function(revenue, expenses, taxxed_profit){
          x = "Month", y = "Amount ($)", color = NULL) +
     theme_minimal()
   
-  ggsave("revenue_expenses_profit.png", plot = p, width = 9, height = 5)
+  ggsave("../../assets/images/revenue_expenses_profit.png", plot = p, width = 9, height = 5)
   print(p)
 }
 
@@ -115,7 +115,7 @@ plot_monthly_profit_bar <- function(taxxed_profit){
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
   
-  ggsave("monthly_profit_bar.png", plot = p, width = 9, height = 5)
+  ggsave("../../assets/images/monthly_profit_bar.png", plot = p, width = 9, height = 5)
   print(p)
 }
 
@@ -137,7 +137,7 @@ plot_profit_margin <- function(margin){
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
   
-  ggsave("profit_margin.png", plot = p, width = 9, height = 5)
+  ggsave("../../assets/images/profit_margin.png", plot = p, width = 9, height = 5)
   print(p)
 }
 
@@ -158,7 +158,7 @@ plot_cumulative_profit <- function(taxxed_profit){
          x = "Month", y = "Cumulative Profit ($)") +
     theme_minimal()
   
-  ggsave("cumulative_profit.png", plot = p, width = 9, height = 5)
+  ggsave("../../assets/images/cumulative_profit.png", plot = p, width = 9, height = 5)
   print(p)
 }
 
