@@ -35,3 +35,24 @@ good_months(taxxed_profit){
   return(good)
 }
 
+bad_months(taxxed_profit){
+  mean <- year_mean_after_tax(taxxed_profit)
+  bad <- taxxed_profit < mean
+  return(bad)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
