@@ -24,3 +24,6 @@ A crossing means the **estimated trend lines** for two clarity groups are approx
 1. **Bigger diamonds cost more, on average.**
 2. **Clarity matters**, but its effect on price isn't the same at every carat weight.
 3. **The relationship isn't strictly linear**, and individual diamond prices vary substantially even within the same carat/clarity group.
+
+### Source
+You can find the code of this project [here](./01_diamonds_price.R).
