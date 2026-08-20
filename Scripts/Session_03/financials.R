@@ -75,88 +75,91 @@ worst_month <- function(taxxed_profit){
 plot_revenue_expenses_profit <- function(revenue, expenses, taxxed_profit){
   months <- month_names()
   
-  png("revenue_expenses_profit.png", width = 900, height = 500)
-  plot(1:12, revenue, type = "o", col = "forestgreen", lwd = 2, pch = 16,
-       ylim = range(c(revenue, expenses, taxxed_profit)),
-       xaxt = "n", xlab = "Month", ylab = "Amount ($)",
-       main = "Revenue vs Expenses vs Profit")
-  lines(1:12, expenses, type = "o", col = "firebrick", lwd = 2, pch = 16)
-  lines(1:12, taxxed_profit, type = "o", col = "steelblue", lwd = 2, pch = 16)
-  axis(1, at = 1:12, labels = months)
-  legend("topleft", legend = c("Revenue", "Expenses", "Taxed Profit"),
-         col = c("forestgreen", "firebrick", "steelblue"), lwd = 2, pch = 16)
-  dev.off()
+  df <- data.frame(
+    month = factor(rep(months, 3), levels = months),
+    value = c(revenue, expenses, taxxed_profit),
+    series = rep(c("Revenue", "Expenses", "Taxed Profit"), each = 12)
+  )
   
-  # show in plot window too
-  plot(1:12, revenue, type = "o", col = "forestgreen", lwd = 2, pch = 16,
-       ylim = range(c(revenue, expenses, taxxed_profit)),
-       xaxt = "n", xlab = "Month", ylab = "Amount ($)",
-       main = "Revenue vs Expenses vs Profit")
-  lines(1:12, expenses, type = "o", col = "firebrick", lwd = 2, pch = 16)
-  lines(1:12, taxxed_profit, type = "o", col = "steelblue", lwd = 2, pch = 16)
-  axis(1, at = 1:12, labels = months)
-  legend("topleft", legend = c("Revenue", "Expenses", "Taxed Profit"),
-         col = c("forestgreen", "firebrick", "steelblue"), lwd = 2, pch = 16)
+  p <- ggplot(df, aes(x = month, y = value, color = series, group = series)) +
+    geom_line(linewidth = 1) +
+    geom_point(size = 2) +
+    scale_color_manual(values = c("Revenue" = "forestgreen",
+                                  "Expenses" = "firebrick",
+                                  "Taxed Profit" = "steelblue")) +
+    labs(title = "Revenue vs Expenses vs Profit",
+         x = "Month", y = "Amount ($)", color = NULL) +
+    theme_minimal()
+  
+  ggsave("revenue_expenses_profit.png", plot = p, width = 9, height = 5)
+  print(p)
 }
 
 plot_monthly_profit_bar <- function(taxxed_profit){
   months <- month_names()
   mean_val <- year_mean_after_tax(taxxed_profit)
-  colors <- ifelse(taxxed_profit >= mean_val, "seagreen", "tomato")
   
-  png("monthly_profit_bar.png", width = 900, height = 500)
-  bars <- barplot(taxxed_profit, names.arg = months, col = colors,
-                  main = "Monthly Taxed Profit (Green = Above Mean, Red = Below Mean)",
-                  ylab = "Taxed Profit ($)", las = 2)
-  abline(h = mean_val, col = "black", lty = 2, lwd = 2)
-  legend("topleft", legend = paste("Mean:", round(mean_val, 2)), lty = 2, lwd = 2)
-  dev.off()
+  df <- data.frame(
+    month = factor(months, levels = months),
+    profit = taxxed_profit,
+    status = ifelse(taxxed_profit >= mean_val, "Above Mean", "Below Mean")
+  )
   
-  barplot(taxxed_profit, names.arg = months, col = colors,
-          main = "Monthly Taxed Profit (Green = Above Mean, Red = Below Mean)",
-          ylab = "Taxed Profit ($)", las = 2)
-  abline(h = mean_val, col = "black", lty = 2, lwd = 2)
-  legend("topleft", legend = paste("Mean:", round(mean_val, 2)), lty = 2, lwd = 2)
+  p <- ggplot(df, aes(x = month, y = profit, fill = status)) +
+    geom_col() +
+    geom_hline(yintercept = mean_val, linetype = "dashed", linewidth = 1) +
+    scale_fill_manual(values = c("Above Mean" = "seagreen", "Below Mean" = "tomato")) +
+    labs(title = "Monthly Taxed Profit",
+         subtitle = paste("Mean:", round(mean_val, 2)),
+         x = "Month", y = "Taxed Profit ($)", fill = NULL) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+  ggsave("monthly_profit_bar.png", plot = p, width = 9, height = 5)
+  print(p)
 }
 
 plot_profit_margin <- function(margin){
   months <- month_names()
   mean_margin <- mean(margin)
   
-  png("profit_margin.png", width = 900, height = 500)
-  bars <- barplot(margin, names.arg = months, col = "steelblue",
-                  main = "Profit Margin by Month",
-                  ylab = "Margin (proportion)", las = 2)
-  abline(h = mean_margin, col = "darkorange", lty = 2, lwd = 2)
-  legend("topleft", legend = paste("Mean margin:", round(mean_margin, 3)),
-         lty = 2, lwd = 2, col = "darkorange")
-  dev.off()
+  df <- data.frame(
+    month = factor(months, levels = months),
+    margin = margin
+  )
   
-  barplot(margin, names.arg = months, col = "steelblue",
-          main = "Profit Margin by Month",
-          ylab = "Margin (proportion)", las = 2)
-  abline(h = mean_margin, col = "darkorange", lty = 2, lwd = 2)
-  legend("topleft", legend = paste("Mean margin:", round(mean_margin, 3)),
-         lty = 2, lwd = 2, col = "darkorange")
+  p <- ggplot(df, aes(x = month, y = margin)) +
+    geom_col(fill = "steelblue") +
+    geom_hline(yintercept = mean_margin, linetype = "dashed", color = "darkorange", linewidth = 1) +
+    labs(title = "Profit Margin by Month",
+         subtitle = paste("Mean margin:", round(mean_margin, 3)),
+         x = "Month", y = "Margin (proportion)") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+  ggsave("profit_margin.png", plot = p, width = 9, height = 5)
+  print(p)
 }
 
 plot_cumulative_profit <- function(taxxed_profit){
   months <- month_names()
   cumulative <- cumsum(taxxed_profit)
   
-  png("cumulative_profit.png", width = 900, height = 500)
-  plot(1:12, cumulative, type = "o", col = "purple", lwd = 2, pch = 16,
-       xaxt = "n", xlab = "Month", ylab = "Cumulative Profit ($)",
-       main = "Cumulative Taxed Profit Over the Year")
-  axis(1, at = 1:12, labels = months)
-  abline(h = 0, col = "gray", lty = 3)
-  dev.off()
+  df <- data.frame(
+    month = factor(months, levels = months),
+    cumulative = cumulative
+  )
   
-  plot(1:12, cumulative, type = "o", col = "purple", lwd = 2, pch = 16,
-       xaxt = "n", xlab = "Month", ylab = "Cumulative Profit ($)",
-       main = "Cumulative Taxed Profit Over the Year")
-  axis(1, at = 1:12, labels = months)
-  abline(h = 0, col = "gray", lty = 3)
+  p <- ggplot(df, aes(x = month, y = cumulative, group = 1)) +
+    geom_line(color = "purple", linewidth = 1) +
+    geom_point(color = "purple", size = 2) +
+    geom_hline(yintercept = 0, linetype = "dotted", color = "gray40") +
+    labs(title = "Cumulative Taxed Profit Over the Year",
+         x = "Month", y = "Cumulative Profit ($)") +
+    theme_minimal()
+  
+  ggsave("cumulative_profit.png", plot = p, width = 9, height = 5)
+  print(p)
 }
 
 display <- function(){
