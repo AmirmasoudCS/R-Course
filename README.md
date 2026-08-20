@@ -11,6 +11,9 @@ The repository contains the code I write throughout the course, along with small
 
 * [🎲 **Law of Large Numbers (LLN)**](./Scripts/Session_02/README.md)
   Exploring the Law of Large Numbers through simulation in R.
+  
+* [💵 **Financial Statement**](./Scripts/Session_03/README.md)
+  Analyzing revenue, expenses, and profit trends for a financial year in R.
 
 ---
 
