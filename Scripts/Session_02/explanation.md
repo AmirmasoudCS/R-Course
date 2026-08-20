@@ -14,15 +14,18 @@ Theoretically, about **68.27%** of values in a standard normal distribution fall
 
 ![Standard normal distribution with probabilities for each region](../../assets/images/normal_distribution_probabilities.png)
 
-*The standard normal distribution, showing the proportion of values falling within 1, 2, and 3 standard deviations of the mean.*
+<p align="center"><i>
+The standard normal distribution, showing the proportion of values falling within 1, 2, and 3 standard deviations of the mean.
+<i></p>
+
 
 ## What the Graph Shows
 
 ![Law of Large Numbers convergence plot](../../assets/images/law_of_large_numbers.png)
 
-<p align="center">
-*Simulated proportion of samples within [-1, +1] as the number of samples increases, converging toward the theoretical 68.27%.*
-</p>
+<p align="center"><i>
+Simulated proportion of samples within [-1, +1] as the number of samples increases, converging toward the theoretical 68.27%.
+</p></i>
 
 - **X-axis (log scale):** Number of samples drawn, ranging from ~10 to 1,000,000.
 - **Y-axis:** The proportion of samples that fell within [-1, +1].
