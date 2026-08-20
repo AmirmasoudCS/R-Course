@@ -40,3 +40,6 @@ As the sample size grows into the thousands and millions, the blue line stabiliz
 ## Takeaway
 
 Small samples can be misleading. Random chance has a big influence. Large samples are far more reliable, as randomness "averages out" and the observed result converges to the true probability.
+
+### Source
+You can find the code of this project [here](./law_of_large_numbers.R).
