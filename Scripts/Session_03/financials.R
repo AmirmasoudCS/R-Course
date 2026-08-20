@@ -72,6 +72,34 @@ worst_month <- function(taxxed_profit){
   return(list(index = min_index, value = min_value))
 }
 
+plot_revenue_expenses_profit <- function(revenue, expenses, taxxed_profit){
+  months <- month_names()
+  
+  png("revenue_expenses_profit.png", width = 900, height = 500)
+  plot(1:12, revenue, type = "o", col = "forestgreen", lwd = 2, pch = 16,
+       ylim = range(c(revenue, expenses, taxxed_profit)),
+       xaxt = "n", xlab = "Month", ylab = "Amount ($)",
+       main = "Revenue vs Expenses vs Profit")
+  lines(1:12, expenses, type = "o", col = "firebrick", lwd = 2, pch = 16)
+  lines(1:12, taxxed_profit, type = "o", col = "steelblue", lwd = 2, pch = 16)
+  axis(1, at = 1:12, labels = months)
+  legend("topleft", legend = c("Revenue", "Expenses", "Taxed Profit"),
+         col = c("forestgreen", "firebrick", "steelblue"), lwd = 2, pch = 16)
+  dev.off()
+  
+  # show in plot window too
+  plot(1:12, revenue, type = "o", col = "forestgreen", lwd = 2, pch = 16,
+       ylim = range(c(revenue, expenses, taxxed_profit)),
+       xaxt = "n", xlab = "Month", ylab = "Amount ($)",
+       main = "Revenue vs Expenses vs Profit")
+  lines(1:12, expenses, type = "o", col = "firebrick", lwd = 2, pch = 16)
+  lines(1:12, taxxed_profit, type = "o", col = "steelblue", lwd = 2, pch = 16)
+  axis(1, at = 1:12, labels = months)
+  legend("topleft", legend = c("Revenue", "Expenses", "Taxed Profit"),
+         col = c("forestgreen", "firebrick", "steelblue"), lwd = 2, pch = 16)
+}
+
+
 
 display <- function(){
   revenue <- read_revenue()
