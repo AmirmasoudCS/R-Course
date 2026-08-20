@@ -29,3 +29,9 @@ yeaer_mean_after_tax(taxxed_profit){
   return(sum/12)
 }
 
+good_months(taxxed_profit){
+  mean <- year_mean_after_tax(taxxed_profit)
+  good <- taxxed_profit > mean
+  return(good)
+}
+
