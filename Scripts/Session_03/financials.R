@@ -1,4 +1,8 @@
 
+sep <- function(){
+  rep("=", times=25)
+}
+
 read_revenue <- function(){
   return(c(14574.49, 7606.46, 8611.41, 9175.41, 8058.65, 8105.44, 11496.28, 9766.09, 10305.32, 14379.96, 10713.97, 15433.50))
 }
@@ -65,7 +69,59 @@ worst_month <- function(taxxed_profit){
   return(min_index, min_value)
 }
 
+display <- function(){
+  revenue <- read_revenue()
+  expenses <- read_expenses()
+  sep()
+  
+  print("\nRevenues:\n")
+  print(revenue)
+  sep()
+  
+  print("\nExpenses:\n")
+  print(expenses)
+  sep()
+  
+  
+  print("\nProfit of each month without the impact of tax:\n")
+  raw_profit <- raw_profit(revenue, expenses)
+  print(raw_profit)
+  sep()
+  
+  print("\nProfit of each month after the impact of tax (30%):\n")
+  taxxed <- taxxed_profit(revenue, expenses)
+  print(taxxed)
+  sep()
+  
+  print("\nProfit margin:\n")
+  margin <- profit_margin(taxxed, revenue)
+  sep()
+  
+  print("\nMean of the year after tax:\n")
+  mean <- year_mean_after_tax(taxxed)
+  sep()
+  
+  print("\nGood months:\n")
+  goods <- good_months(taxxed)
+  sep()
+  
+  print("\nBad months:\n")
+  bads <- bad_months(taxxed)
+  sep()
+  
+  print("\nBest month:\n")
+  best <- best_month(taxxed)
+  sep()
+  
+  print("\nWorst month:\n")
+  worst <- worst_month(taxxed)
+  sep()
+  
+}
 
+main <- function(){
+  display()
+}
 
 
 
