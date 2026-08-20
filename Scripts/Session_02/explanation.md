@@ -12,7 +12,7 @@ In this simulation, we repeatedly drew random samples from a **standard normal d
 
 Theoretically, about **68.27%** of values in a standard normal distribution fall within one standard deviation of the mean. This is the well-known **68-95-99.7 empirical rule**.
 
-<div>
+<div align="center">
 <img src="../../assets/images/normal_distribution_probabilities.png">
 </div>
 <p align="center"><i>
@@ -21,7 +21,7 @@ The standard normal distribution, showing the proportion of values falling withi
 
 ## What the Graph Shows
 
-<div>
+<div align="center">
 <img src="../../assets/images/law_of_large_numbers.png">
 </div>
 
