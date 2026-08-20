@@ -17,3 +17,7 @@ taxxed_profit <- function(revenue, expenses, tax_rate=0.3){
   return(after_tax)
 }
 
+profit_margin <- function(taxxed_profit, revenue){
+  return(taxxed_profit/revenue)
+}
+
