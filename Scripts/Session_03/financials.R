@@ -119,6 +119,27 @@ plot_monthly_profit_bar <- function(taxxed_profit){
   legend("topleft", legend = paste("Mean:", round(mean_val, 2)), lty = 2, lwd = 2)
 }
 
+plot_profit_margin <- function(margin){
+  months <- month_names()
+  mean_margin <- mean(margin)
+  
+  png("profit_margin.png", width = 900, height = 500)
+  bars <- barplot(margin, names.arg = months, col = "steelblue",
+                  main = "Profit Margin by Month",
+                  ylab = "Margin (proportion)", las = 2)
+  abline(h = mean_margin, col = "darkorange", lty = 2, lwd = 2)
+  legend("topleft", legend = paste("Mean margin:", round(mean_margin, 3)),
+         lty = 2, lwd = 2, col = "darkorange")
+  dev.off()
+  
+  barplot(margin, names.arg = months, col = "steelblue",
+          main = "Profit Margin by Month",
+          ylab = "Margin (proportion)", las = 2)
+  abline(h = mean_margin, col = "darkorange", lty = 2, lwd = 2)
+  legend("topleft", legend = paste("Mean margin:", round(mean_margin, 3)),
+         lty = 2, lwd = 2, col = "darkorange")
+}
+
 
 
 display <- function(){
