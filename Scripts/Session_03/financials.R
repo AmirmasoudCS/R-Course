@@ -1,6 +1,5 @@
-
 sep <- function(){
-  rep("=", times=25)
+  cat(strrep("=", 25), "\n")
 }
 
 read_revenue <- function(){
@@ -15,33 +14,33 @@ raw_profit <- function(revenue, expenses){
   return(revenue - expenses)
 }
 
-taxxed_profit <- function(revenue, expenses, tax_rate=0.3){
-  raw_profit <- raw_profit(revenue, expenses)
-  after_tax <- (1-tax_rate)*raw_profit
+taxxed_profit <- function(revenue, expenses, tax_rate = 0.3){
+  raw_p <- raw_profit(revenue, expenses)
+  after_tax <- (1 - tax_rate) * raw_p
   return(after_tax)
 }
 
 profit_margin <- function(taxxed_profit, revenue){
-  return(taxxed_profit/revenue)
+  return(taxxed_profit / revenue)
 }
 
-yeaer_mean_after_tax <- function(taxxed_profit){
+year_mean_after_tax <- function(taxxed_profit){
   sum <- 0
   for(i in 1:12){
     sum <- sum + taxxed_profit[i]
   }
-  return(sum/12)
+  return(sum / 12)
 }
 
 good_months <- function(taxxed_profit){
-  mean <- year_mean_after_tax(taxxed_profit)
-  good <- taxxed_profit > mean
+  mean_val <- year_mean_after_tax(taxxed_profit)
+  good <- taxxed_profit > mean_val
   return(good)
 }
 
 bad_months <- function(taxxed_profit){
-  mean <- year_mean_after_tax(taxxed_profit)
-  bad <- taxxed_profit < mean
+  mean_val <- year_mean_after_tax(taxxed_profit)
+  bad <- taxxed_profit < mean_val
   return(bad)
 }
 
@@ -49,24 +48,24 @@ best_month <- function(taxxed_profit){
   max_index <- 1
   max_value <- taxxed_profit[1]
   for(i in 2:12){
-    if(taxxed_profit[i]>max_value){
+    if(taxxed_profit[i] > max_value){
       max_index <- i
       max_value <- taxxed_profit[i]
     }
   }
-  return(max_index, max_value)
+  return(list(index = max_index, value = max_value))
 }
 
 worst_month <- function(taxxed_profit){
   min_index <- 1
   min_value <- taxxed_profit[1]
   for(i in 2:12){
-    if(taxxed_profit[i]<min_value){
+    if(taxxed_profit[i] < min_value){
       min_index <- i
       min_value <- taxxed_profit[i]
     }
   }
-  return(min_index, min_value)
+  return(list(index = min_index, value = min_value))
 }
 
 display <- function(){
@@ -74,65 +73,57 @@ display <- function(){
   expenses <- read_expenses()
   sep()
   
-  print("\nRevenues:\n")
+  cat("\nRevenues:\n")
   print(revenue)
   sep()
   
-  print("\nExpenses:\n")
+  cat("\nExpenses:\n")
   print(expenses)
   sep()
   
-  
-  print("\nProfit of each month without the impact of tax:\n")
-  raw_profit <- raw_profit(revenue, expenses)
-  print(raw_profit)
+  cat("\nProfit of each month without the impact of tax:\n")
+  raw_p <- raw_profit(revenue, expenses)
+  print(raw_p)
   sep()
   
-  print("\nProfit of each month after the impact of tax (30%):\n")
+  cat("\nProfit of each month after the impact of tax (30%):\n")
   taxxed <- taxxed_profit(revenue, expenses)
   print(taxxed)
   sep()
   
-  print("\nProfit margin:\n")
+  cat("\nProfit margin:\n")
   margin <- profit_margin(taxxed, revenue)
+  print(margin)
   sep()
   
-  print("\nMean of the year after tax:\n")
-  mean <- year_mean_after_tax(taxxed)
+  cat("\nMean of the year after tax:\n")
+  year_mean <- year_mean_after_tax(taxxed)
+  print(year_mean)
   sep()
   
-  print("\nGood months:\n")
+  cat("\nGood months:\n")
   goods <- good_months(taxxed)
+  print(goods)
   sep()
   
-  print("\nBad months:\n")
+  cat("\nBad months:\n")
   bads <- bad_months(taxxed)
+  print(bads)
   sep()
   
-  print("\nBest month:\n")
+  cat("\nBest month:\n")
   best <- best_month(taxxed)
+  cat("Month index:", best$index, "- Value:", best$value, "\n")
   sep()
   
-  print("\nWorst month:\n")
+  cat("\nWorst month:\n")
   worst <- worst_month(taxxed)
+  cat("Month index:", worst$index, "- Value:", worst$value, "\n")
   sep()
-  
 }
 
 main <- function(){
   display()
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+main()
