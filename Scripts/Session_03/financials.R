@@ -7,3 +7,7 @@ read_expenses <- function(){
   return(c(12051.82, 5695.07, 12319.20, 12089.72, 8658.57, 840.20, 3285.73, 5821.12, 6976.93, 16618.61, 10054.37, 3803.96))
 }
 
+raw_profit <- function(revenue, expenses){
+  return(revenue - expenses)
+}
+
