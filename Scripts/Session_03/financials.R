@@ -2,6 +2,10 @@ sep <- function(){
   cat(strrep("=", 25), "\n")
 }
 
+month_names <- function(){
+  return(c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"))
+}
+
 read_revenue <- function(){
   return(c(14574.49, 7606.46, 8611.41, 9175.41, 8058.65, 8105.44, 11496.28, 9766.09, 10305.32, 14379.96, 10713.97, 15433.50))
 }
@@ -67,6 +71,7 @@ worst_month <- function(taxxed_profit){
   }
   return(list(index = min_index, value = min_value))
 }
+
 
 display <- function(){
   revenue <- read_revenue()
