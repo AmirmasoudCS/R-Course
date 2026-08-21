@@ -121,3 +121,8 @@ ft_df[ft_df$is_outlier, c("Player", "Season", "FTA", "FT_pct", "predicted_pct", 
 get_top_n <- function(df, n=10, by="FT_pct_adj"){
     df[order(-df[[by]]), ][1:n, ]
 }
+
+filter_by_min_attempts <- function(df, min_attempts = 20) {
+  df[df$FTA >= min_attempts, ]
+}
+
