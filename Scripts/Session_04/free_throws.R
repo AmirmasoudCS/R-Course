@@ -126,3 +126,10 @@ filter_by_min_attempts <- function(df, min_attempts = 20) {
   df[df$FTA >= min_attempts, ]
 }
 
+# Top 10 seasons by adjusted FT%, excluding tiny sample sizes
+top10 <- get_top_n(filter_by_min_attempts(ft_df, 50), n = 10, by = "FT_pct_adj")
+top10[, c("Player", "Season", "FTA", "FT_pct", "FT_pct_adj")]
+
+# Compare: top 10 by RAW FT% (unfiltered) — should look different/less sensible
+top10_raw <- get_top_n(ft_df, n = 10, by = "FT_pct")
+top10_raw[, c("Player", "Season", "FTA", "FT_pct", "FT_pct_adj")]
