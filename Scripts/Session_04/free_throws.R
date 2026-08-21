@@ -48,3 +48,8 @@ build_ft_dataframe <- function(){
 ft_df <- build_ft_dataframe()
 head(ft_df)
 str(ft_df)
+
+compute_ft_pct <- function(df){
+    df$FT_pct <- ifelse(df$FTA==0, NA, df$FT / df$FTA *100)
+    df
+}
