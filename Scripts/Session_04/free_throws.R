@@ -218,4 +218,20 @@ plot_career_trend <- function(df, filename = "career_trend.png") {
 
 plot_career_trend(ft_df)
 
+plot_outliers <- function(df, filename = "outliers.png") {
+  p <- ggplot(df, aes(x = FTA, y = FT_pct)) +
+    geom_point(aes(color = is_outlier, size = is_outlier)) +
+    scale_color_manual(values = c("FALSE" = "grey60", "TRUE" = "red")) +
+    scale_size_manual(values = c("FALSE" = 1.5, "TRUE" = 3)) +
+    geom_line(aes(y = predicted_pct), color = "black", linewidth = 0.7, na.rm = TRUE) +
+    labs(title = "Outliers: FT% vs. Loess-Predicted FT%",
+         x = "Free Throw Attempts", y = "FT%") +
+    theme_minimal()
+  
+  ggsave(filename = file.path("./assets/images", filename), plot = p, width = 9, height = 6, dpi = 150)
+  p
+}
+
+plot_outliers(ft_df)
+
 
