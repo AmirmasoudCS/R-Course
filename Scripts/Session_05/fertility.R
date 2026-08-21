@@ -25,7 +25,7 @@ str(life_exp_df)
 merged_df <- merge(
   csv_file, 
   life_exp_df, 
-  by = c("Country Code", "Year")
+  by = c("Country.Code", "Year")
 )
 
 nrow(merged_df)
