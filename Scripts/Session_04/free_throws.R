@@ -167,4 +167,21 @@ plot_volume_vs_accuracy <- function(df, filename = "volume_vs_accuracy.png") {
 
 plot_volume_vs_accuracy(ft_df)
 
+plot_top_n_bar <- function(df, n = 10, by = "FT_pct_adj", min_attempts = 50, filename = "top_n_bar.png") {
+  top_df <- get_top_n(filter_by_min_attempts(df, min_attempts), n = n, by = by)
+  top_df$label <- paste(top_df$Player, top_df$Season)
+  
+  p <- ggplot(top_df, aes(x = reorder(label, .data[[by]]), y = .data[[by]])) +
+    geom_col(fill = "darkorange") +
+    coord_flip() +
+    labs(title = paste("Top", n, "Seasons by Adjusted FT%"),
+         x = "", y = "FT% (adjusted)") +
+    theme_minimal()
+  
+  ggsave(filename = file.path("./assets/images", filename), plot = p, width = 8, height = 6, dpi = 150)
+  p
+}
+
+plot_top_n_bar(ft_df)
+
 
