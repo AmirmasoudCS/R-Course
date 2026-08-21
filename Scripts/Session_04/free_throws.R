@@ -133,3 +133,10 @@ top10[, c("Player", "Season", "FTA", "FT_pct", "FT_pct_adj")]
 # Compare: top 10 by RAW FT% (unfiltered) — should look different/less sensible
 top10_raw <- get_top_n(ft_df, n = 10, by = "FT_pct")
 top10_raw[, c("Player", "Season", "FTA", "FT_pct", "FT_pct_adj")]
+
+library(ggplot2)
+
+if (!dir.exists("./assets/images")) {
+  dir.create("./assets/images", recursive = TRUE)
+}
+
