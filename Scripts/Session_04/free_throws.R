@@ -203,4 +203,19 @@ plot_ci_errorbar <- function(df, n = 20, filename = "ci_errorbar.png") {
 
 plot_ci_errorbar(ft_df)
 
+plot_career_trend <- function(df, filename = "career_trend.png") {
+  p <- ggplot(df, aes(x = Season, y = FT_pct, group = Player, color = Player)) +
+    geom_line(linewidth = 0.9, na.rm = TRUE) +
+    geom_point(size = 1.5, na.rm = TRUE) +
+    labs(title = "Free Throw % Over Career (2005–2014)",
+         x = "Season", y = "FT%") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+  ggsave(filename = file.path("./assets/images", filename), plot = p, width = 10, height = 6, dpi = 150)
+  p
+}
+
+plot_career_trend(ft_df)
+
 
