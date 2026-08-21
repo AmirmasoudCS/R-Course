@@ -98,4 +98,20 @@ compute_wilson_ci <- function(df, conf_level=0.95){
 ft_df <- compute_wilson_ci(ft_df)
 ft_df[ft_df$Player == "DerrickRose",]
 
+flag_outliers <- function(df, threshold=2){
+    valid <- !is.na(df$FT_pct)
+
+    loess_fit <- loess(FT_pct ~ FTA, data=df[valid,])
+
+    df$predicted_pct <- NA
+    df$predicted_pct[valid] <- predict(loess_fit)
+
+    df$residual <- df$FT_pct - df$predicted_pct
+
+    resid_sd <- sd(df$residual, na.rm = TRUE)
+    df$is_outlier <- !is.na(df$residual) & abs(df$residual) > threshold * resid_sd
+
+    df
+}
+
 
