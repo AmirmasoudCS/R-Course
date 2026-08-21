@@ -57,3 +57,8 @@ compute_ft_pct <- function(df){
 ft_df <- compute_ft_pct(ft_df)
 head(ft_df)
 sum(is.na(ft_df$FT_pct))
+
+compute_league_avg <- function(df){
+    sum(df$FT, na.rm = TRUE) / sum(df$FTA, na.rm=TRUE) * 100
+}
+
