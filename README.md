@@ -15,6 +15,9 @@ The repository contains the code I write throughout the course, along with small
 * [💵 **Financial Statement**](./Scripts/Session_03/README.md)
   Analyzing revenue, expenses, and profit trends for a financial year in R.
 
+* [🏀 **NBA Free Throw Analysis**](./Scripts/Session_04/README.md)
+  Analyzing free throw accuracy, volume, and outliers for NBA players in R.
+  
 ---
 
 > **Note:** This repository is primarily a learning record.
