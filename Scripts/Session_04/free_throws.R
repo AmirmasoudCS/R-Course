@@ -65,3 +65,9 @@ compute_league_avg <- function(df){
 league_avg <- compute_league_avg(ft_df)
 league_avg
 
+compute_adjusted_pct <- function(df, k=20){
+    league_avg <- compute_league_avg(df) / 100
+    df$FT_pct_adj <- (df$FT + k*league_avg) / (df$FTA + k) * 100
+    df
+}
+
