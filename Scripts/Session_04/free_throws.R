@@ -62,3 +62,6 @@ compute_league_avg <- function(df){
     sum(df$FT, na.rm = TRUE) / sum(df$FTA, na.rm=TRUE) * 100
 }
 
+league_avg <- compute_league_avg(ft_df)
+league_avg
+
