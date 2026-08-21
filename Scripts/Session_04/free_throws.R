@@ -114,4 +114,7 @@ flag_outliers <- function(df, threshold=2){
     df
 }
 
+ft_df <- flag_outliers(ft_df)
+ft_df[ft_df$is_outlier, c("Player", "Season", "FTA", "FT_pct", "predicted_pct", "residual")]
+
 
