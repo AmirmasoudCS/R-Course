@@ -118,3 +118,6 @@ ft_df <- flag_outliers(ft_df)
 ft_df[ft_df$is_outlier, c("Player", "Season", "FTA", "FT_pct", "predicted_pct", "residual")]
 
 
+get_top_n <- function(df, n=10, by="FT_pct_adj"){
+    df[order(-df[[by]]), ][1:n, ]
+}
