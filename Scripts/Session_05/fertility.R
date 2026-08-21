@@ -22,19 +22,48 @@ head(merged_df)
 sum(is.na(merged_df$Life_Expectancy))
 
 library(ggplot2)
+library(ggrepel)
 
-plot_life_fertility <- function(df, year) {
+plot_life_fertility <- function(df, year, n_outliers = 5) {
   data_year <- df[df$Year == year, ]
+  
+  model <- lm(Life_Expectancy ~ Fertility.Rate, data = data_year)
+  data_year$residual <- resid(model)
+  data_year$abs_residual <- abs(data_year$residual)
+  
+  outliers <- data_year[order(-data_year$abs_residual), ][1:n_outliers, ]
+  
+  corr_val <- cor(data_year$Fertility.Rate, data_year$Life_Expectancy)
   
   ggplot(data_year, aes(x = Fertility.Rate, y = Life_Expectancy, color = Region)) +
     geom_point(size = 2.5, alpha = 0.8) +
+    geom_smooth(method = "lm", se = FALSE, linewidth = 0.7) +
+    geom_text_repel(
+      data = outliers,
+      aes(label = Country.Name),
+      size = 3,
+      color = "black",
+      max.overlaps = 15
+    ) +
+    annotate(
+      "text",
+      x = max(data_year$Fertility.Rate) * 0.75,
+      y = max(data_year$Life_Expectancy) * 0.95,
+      label = paste("Overall r =", round(corr_val, 2)),
+      size = 4,
+      fontface = "italic"
+    ) +
     labs(
       title = paste("Life Expectancy vs Fertility Rate -", year),
       x = "Fertility Rate",
       y = "Life Expectancy at Birth",
       color = "Region"
     ) +
-    theme_minimal()
+    theme_minimal(base_size = 13) +
+    theme(
+      plot.title = element_text(face = "bold", size = 15),
+      legend.position = "right"
+    )
 }
 
 plot_1960 <- plot_life_fertility(merged_df, 1960)
