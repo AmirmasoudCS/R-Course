@@ -37,7 +37,7 @@ build_ft_dataframe <- function(){
             Season = Seasons,
             FT = ft,
             FTA = fta,
-            stringsAsFactors = FALSE,
+            stringsAsFactors = FALSE
         )
     })
     df <- do.call(rbind, df_list)
