@@ -1,3 +1,9 @@
+#Seasons
+Seasons <- c("2005","2006","2007","2008","2009","2010","2011","2012","2013","2014")
+
+#Players
+Players <- c("KobeBryant","JoeJohnson","LeBronJames","CarmeloAnthony","DwightHoward","ChrisBosh","ChrisPaul","KevinDurant","DerrickRose","DwayneWade")
+
 #Free Throws
 KobeBryant_FT <- c(696,667,623,483,439,483,381,525,18,196)
 JoeJohnson_FT <- c(261,235,316,299,220,195,158,132,159,141)
@@ -21,3 +27,4 @@ ChrisPaul_FTA <- c(465,357,390,524,190,384,302,323,345,321)
 KevinDurant_FTA <- c(256,256,448,524,840,675,501,750,805,171)
 DerrickRose_FTA <- c(205,205,205,250,338,555,239,0,32,187)
 DwayneWade_FTA <- c(803,535,467,771,702,652,297,425,258,370)
+
