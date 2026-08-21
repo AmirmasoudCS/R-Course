@@ -46,3 +46,6 @@ Each scatterplot shows Fertility Rate (x-axis) against Life Expectancy at Birth 
 **Persistent outliers.** Countries like Sierra Leone, Mali, and Equatorial Guinea were notable low-life-expectancy outliers in 1960; by 2013, the most extreme outliers had shifted to countries like Niger (highest fertility rate in the dataset) and South Africa, Lesotho, and Swaziland, whose life expectancy dropped or lagged well below what their fertility rate alone would predict, plausibly reflecting the impact of the HIV/AIDS epidemic in Southern Africa in the years leading up to 2013.
 
 **Takeaway.** Over the 53-year period, the global relationship between fertility and life expectancy tightened, the average country moved to a lower-fertility, higher-life-expectancy position, and regional disparities, while still present in 2013, narrowed considerably compared to 1960.
+
+### Source
+You can find the code for this project [here](./fertility.R).
