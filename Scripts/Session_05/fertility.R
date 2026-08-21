@@ -11,3 +11,6 @@ life_exp_df <- data.frame(
     check.names = FALSE
 )
 
+head(life_exp_df)
+str(life_exp_df)
+
