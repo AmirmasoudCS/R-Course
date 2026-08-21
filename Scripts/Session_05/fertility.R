@@ -24,7 +24,7 @@ sum(is.na(merged_df$Life_Expectancy))
 library(ggplot2)
 library(ggrepel)
 
-plot_life_fertility <- function(df, year, n_outliers = 5) {
+plot_life_fertility <- function(df, year, n_outliers = 5, full_df = df) {
   data_year <- df[df$Year == year, ]
   
   model <- lm(Life_Expectancy ~ Fertility.Rate, data = data_year)
@@ -34,6 +34,9 @@ plot_life_fertility <- function(df, year, n_outliers = 5) {
   outliers <- data_year[order(-data_year$abs_residual), ][1:n_outliers, ]
   
   corr_val <- cor(data_year$Fertility.Rate, data_year$Life_Expectancy)
+  
+  x_range <- range(full_df$Fertility.Rate, na.rm = TRUE)
+  y_range <- range(full_df$Life_Expectancy, na.rm = TRUE)
   
   ggplot(data_year, aes(x = Fertility.Rate, y = Life_Expectancy, color = Region)) +
     geom_point(size = 2.5, alpha = 0.8) +
@@ -47,12 +50,13 @@ plot_life_fertility <- function(df, year, n_outliers = 5) {
     ) +
     annotate(
       "text",
-      x = max(data_year$Fertility.Rate) * 0.75,
-      y = max(data_year$Life_Expectancy) * 0.95,
+      x = x_range[2] * 0.75,
+      y = y_range[2] * 0.98,
       label = paste("Overall r =", round(corr_val, 2)),
       size = 4,
       fontface = "italic"
     ) +
+    coord_cartesian(xlim = x_range, ylim = y_range) +
     labs(
       title = paste("Life Expectancy vs Fertility Rate -", year),
       x = "Fertility Rate",
