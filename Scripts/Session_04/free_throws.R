@@ -184,4 +184,23 @@ plot_top_n_bar <- function(df, n = 10, by = "FT_pct_adj", min_attempts = 50, fil
 
 plot_top_n_bar(ft_df)
 
+plot_ci_errorbar <- function(df, n = 20, filename = "ci_errorbar.png") {
+  sub_df <- filter_by_min_attempts(df, 20)
+  sub_df <- get_top_n(sub_df, n = n, by = "FT_pct")
+  sub_df$label <- paste(sub_df$Player, sub_df$Season)
+  
+  p <- ggplot(sub_df, aes(x = reorder(label, FT_pct), y = FT_pct)) +
+    geom_point(color = "steelblue", size = 2) +
+    geom_errorbar(aes(ymin = CI_lower, ymax = CI_upper), width = 0.3) +
+    coord_flip() +
+    labs(title = "FT% with 95% Wilson Confidence Intervals",
+         x = "", y = "FT%") +
+    theme_minimal()
+  
+  ggsave(filename = file.path("./assets/images", filename), plot = p, width = 8, height = 7, dpi = 150)
+  p
+}
+
+plot_ci_errorbar(ft_df)
+
 
