@@ -18,6 +18,8 @@ The repository contains the code I write throughout the course, along with small
 * [🏀 **NBA Free Throw Analysis**](./Scripts/Session_04/README.md)
   Analyzing free throw accuracy, volume, and outliers for NBA players in R.
   
+* [👶 **Fertility Rate vs Life Expectancy**](./Scripts/Session_05/README.md)
+  Comparing fertility rate and life expectancy by country and region across 1960 and 2013 in R.  
 ---
 
 > **Note:** This repository is primarily a learning record.
