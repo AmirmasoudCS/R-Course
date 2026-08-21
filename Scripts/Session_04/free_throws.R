@@ -95,4 +95,7 @@ compute_wilson_ci <- function(df, conf_level=0.95){
     df
 }
 
+ft_df <- compute_wilson_ci(ft_df)
+ft_df[ft_df$Player == "DerrickRose",]
+
 
