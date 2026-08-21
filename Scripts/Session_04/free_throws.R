@@ -53,3 +53,7 @@ compute_ft_pct <- function(df){
     df$FT_pct <- ifelse(df$FTA==0, NA, df$FT / df$FTA *100)
     df
 }
+
+ft_df <- compute_ft_pct(ft_df)
+head(ft_df)
+sum(is.na(ft_df$FT_pct))
