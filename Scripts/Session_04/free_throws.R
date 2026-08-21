@@ -74,3 +74,5 @@ compute_adjusted_pct <- function(df, k=20){
 ft_df <- compute_adjusted_pct(ft_df, k=20)
 head(ft_df)
 
+ft_df[ft_df$Player == "DerrickRose", ]
+
