@@ -14,3 +14,11 @@ life_exp_df <- data.frame(
 head(life_exp_df)
 str(life_exp_df)
 
+merged_df <- merge(
+  csv_file, 
+  life_exp_df, 
+  by = c("Country Code", "Year")
+)
+
+str(merged_df)
+head(merged_df)
