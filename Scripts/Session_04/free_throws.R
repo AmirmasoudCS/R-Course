@@ -140,3 +140,16 @@ if (!dir.exists("./assets/images")) {
   dir.create("./assets/images", recursive = TRUE)
 }
 
+plot_ft_distribution <- function(df, filename = "ft_distribution.png") {
+  p <- ggplot(df, aes(x = FT_pct)) +
+    geom_histogram(binwidth = 3, fill = "steelblue", color = "white", boundary = 0) +
+    labs(title = "Distribution of Free Throw Percentages",
+         x = "FT%", y = "Count") +
+    theme_minimal()
+  
+  ggsave(filename = file.path("./assets/images", filename), plot = p, width = 8, height = 5, dpi = 150)
+  p
+}
+
+plot_ft_distribution(ft_df)
+
