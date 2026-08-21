@@ -20,3 +20,28 @@ merged_df <- merge(
 nrow(merged_df)
 head(merged_df)
 sum(is.na(merged_df$Life_Expectancy))
+
+library(ggplot2)
+
+plot_life_fertility <- function(df, year) {
+  data_year <- df[df$Year == year, ]
+  
+  ggplot(data_year, aes(x = Fertility.Rate, y = Life_Expectancy, color = Region)) +
+    geom_point(size = 2.5, alpha = 0.8) +
+    labs(
+      title = paste("Life Expectancy vs Fertility Rate -", year),
+      x = "Fertility Rate",
+      y = "Life Expectancy at Birth",
+      color = "Region"
+    ) +
+    theme_minimal()
+}
+
+plot_1960 <- plot_life_fertility(merged_df, 1960)
+plot_2013 <- plot_life_fertility(merged_df, 2013)
+
+plot_1960
+plot_2013
+
+ggsave("./assets/images/life_expectancy_vs_fertility_1960.png", plot = plot_1960, width = 8, height = 6, dpi = 300)
+ggsave("./assets/images/life_expectancy_vs_fertility_2013.png", plot = plot_2013, width = 8, height = 6, dpi = 300)
