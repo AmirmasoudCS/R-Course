@@ -29,7 +29,7 @@ DerrickRose_FTA <- c(205,205,205,250,338,555,239,0,32,187)
 DwayneWade_FTA <- c(803,535,467,771,702,652,297,425,258,370)
 
 build_ft_dataframe <- function(){
-    df_list <- lapply(Player, function(p) {
+    df_list <- lapply(Players, function(p) {
         ft <- get(paste0(p, "_FT"))
         fta <- get(paste0(p, "_FTA"))
         data.frame(
@@ -44,3 +44,7 @@ build_ft_dataframe <- function(){
     df$Season <- factor(df$Season, levels=Seasons, ordered=TRUE)
     df
 }
+
+ft_df <- build_ft_dataframe()
+head(ft_df)
+str(ft_df)
