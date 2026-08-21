@@ -32,7 +32,7 @@ Note: Derrick Rose's 2012 season has 0 attempts (injury year), so `FT_pct` is `N
 
 ### FT Distribution
 
-![FT Distribtuion](../../assets/images/ft_distribution.png)
+![FT Distribution](../../assets/images/ft_distribution.png)
 
 Histogram of all FT% values. The distribution is left-skewed with two clusters: most seasons sit between 75% and 90%, while a small, separate cluster around 50-60% belongs almost entirely to one player (Dwight Howard).
 
@@ -42,15 +42,15 @@ Histogram of all FT% values. The distribution is left-skewed with two clusters: 
 
 FT% plotted against attempts, with a loess trend line. Most players cluster between 75% and 90% regardless of volume; Dwight Howard sits far below the pack even at high attempt counts, pulling the overall trend line downward at the high-volume end.
 
-### Carrer Trend
+### Career Trend
 
-![Carrer Trend](../../assets/images/career_trend.png)
+![Career Trend](../../assets/images/career_trend.png)
 
 FT% over time for each player. Most players hover in a stable 75-90% band across their careers. Dwight Howard's line sits consistently below everyone else and drops sharply after 2010; Derrick Rose's line breaks in 2012, matching his injury-shortened season.
 
-### CI Error
+### Confidence Intervals
 
-![CI Error](../../assets/images/ci_errorbar.png)
+![Confidence Intervals](../../assets/images/ci_errorbar.png)
 
 Top 20 seasons by raw FT%, shown with 95% confidence intervals. High-volume seasons (Kevin Durant, Chris Paul) have narrow intervals, meaning we can trust those percentages closely. Low-volume seasons like Kobe Bryant 2013 (27/32) have a very wide interval, showing the raw percentage there is not very reliable.
 
