@@ -76,3 +76,23 @@ head(ft_df)
 
 ft_df[ft_df$Player == "DerrickRose", ]
 
+install.packages("binom")
+library("binom")
+
+compute_wilson_ci <- function(df, conf_level=0.95){
+    ci <- binom.confint(
+        x = ifelse(df$FTA ==0, 0, df$FT),
+        n = ifelse(df$FTA== 0, 1, df$FTA),
+        conf.level = conf_level,
+        methods="wilson"
+    )
+    df$CI_lower <- ci$lower * 100
+    df$CI_upper <- ci$upper * 100
+
+    df$CI_lower[df$FTA==0] <- NA
+    df$CI_upper[df$FTA==0] <- NA
+
+    df
+}
+
+
