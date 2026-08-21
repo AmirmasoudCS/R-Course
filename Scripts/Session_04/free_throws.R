@@ -153,3 +153,18 @@ plot_ft_distribution <- function(df, filename = "ft_distribution.png") {
 
 plot_ft_distribution(ft_df)
 
+plot_volume_vs_accuracy <- function(df, filename = "volume_vs_accuracy.png") {
+  p <- ggplot(df, aes(x = FTA, y = FT_pct)) +
+    geom_point(aes(color = Player), alpha = 0.7, size = 2) +
+    geom_smooth(method = "loess", se = TRUE, color = "black", linewidth = 0.8) +
+    labs(title = "Free Throw Accuracy vs. Volume",
+         x = "Free Throw Attempts", y = "FT%") +
+    theme_minimal()
+  
+  ggsave(filename = file.path("./assets/images", filename), plot = p, width = 9, height = 6, dpi = 150)
+  p
+}
+
+plot_volume_vs_accuracy(ft_df)
+
+
